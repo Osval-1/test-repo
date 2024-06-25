@@ -8,9 +8,13 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "lint": "eslint . --fix --max-warnings=0",
-    "format": "prettier . --write",
+    "check-format": "prettier --check .",
+    "format": "prettier --write .",
+    "check-lint": "eslint . --cache",
+    "check-types": "tsc --noEmit",
     "prepare": "husky"
   },
+  
   "dependencies": {
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/stack": "^6.3.29",
@@ -47,7 +51,10 @@
   },
   "private": true,
   "lint-staged": {
-    "*.{ts,tsx}": "eslint --cache --fix && prettier --cache --write"
+    "*.{ts,tsx}": [
+      "eslint --cache --fix",
+      "prettier --cache --write"
+    ]
   },
   "jest": {
     "preset": "jest-expo",
