@@ -1,6 +1,7 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
- npx lint-staged
- # If everything passes... Now we can commit
+ npx lint-staged || (
  echo '✅✅✅ Code looks good to, win... I am committing this ✅✅✅\n'
  exit 0
+ )
+
